@@ -1,10 +1,10 @@
 {
-    "name": "My plugin",
+    "name": "HA Agent",
     "version": "0.0.1",
-    "description": "Description of my_plugin.",
-    "author_name": "Me",
-    "author_url": "https://mywebsite.me",
-    "plugin_url": "https://github.com/my_name/my_plugin",
-    "tags": "cat, template, example",
-    "thumb": "https://raw.githubusercontent.com/my_repo_path/my_plugin.png"
+    "description": "The HA Agent is a plugin that helps you integrate the Cat within your HomeAssistant instance. Let the Cat manage your home devices!",
+    "author_name": "Luca Gobbi",
+    "author_url": "https://github.com/lucagobbi",
+    "plugin_url": "https://github.com/lucagobbi/ha_agent",
+    "tags": "cat, homeassistant, iot, smarthome",
+    "thumb": "https://raw.githubusercontent.com/my_repo_path/ha_agent.png"
 }
