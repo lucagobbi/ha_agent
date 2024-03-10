@@ -1,32 +1,48 @@
-from cat.mad_hatter.decorators import tool, hook, plugin
-from cat.plugins.ha_agent.settings import HaAgentSettings
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from cat.experimental.form import form, CatForm
+import requests
 
-# data structure to fill up
-class LightOnModel(BaseModel):
+class LightOnOffModel(BaseModel):
     light_name: str
+    state: bool = Field(description="True for on, False for off")
 
-
-# forms let you control goal oriented conversations
 @form
 class LightOnForm(CatForm):
-    description = "Turn on the light of the specified light name"
-    model_class = LightOnModel
+    description = "Turn on/off the light of the specified light name"
+    model_class = LightOnOffModel
     start_examples = [
         "Turn on the kitchen light",
-        "Turn on the bedroom light"
+        "Turn on the bedroom light",
+        "Turn off the kitchen light",
+        "Turn off the bedroom light",
     ]
     stop_examples = []
-    ask_confirm = False
-
+    light_api_url = "/api/services/light/"
+    
     def submit(self, form_data):
-        
-        # do the actual order here!
+        settings = self.cat.mad_hatter.get_plugin().load_settings()
 
-        # return to convo
+        headers = {
+                "Authorization": f"Bearer {settings['ha_token']}"
+        }
+
+        # we need to retrieve the correct entity_id base on form_data["light_name"]
+        body = {
+            "entity_id": "light.light_entity_id",
+        }
+        if form_data["state"]:
+            url = f"{settings['ha_instance']}{self.light_api_url}/turn_on"
+        else:
+            url = f"{settings['ha_instance']}{self.light_api_url}turn_off"
+        
+
+        response = requests.post(url, headers=headers, json=body)
+
+        if response.status_code != 200:
+            raise Exception(f"Error {response.status_code}: {response.text}")
+
         return {
-            "output": f"Pizza order on its way: {form_data}"
+            "output": f"Light {form_data['light_name']} turned on" if form_data["state"] else f"Light {form_data['light_name']} turned off"
         }
 
 
