@@ -1,3 +1,4 @@
+from cat.mad_hatter.decorators import plugin
 from pydantic import BaseModel, Field
 from typing import Optional
 
@@ -15,8 +16,7 @@ class HaAgentSettings(BaseModel):
         title="HA Auth Token (only if not addon)",
         default="Bearer ..."
     )
-    ha_services: str = Field(
-        title="HA Services you want the Cat to be able to call",
-        default="[]",
-        extra={"type": "TextArea"}
-    )
+
+@plugin
+def settings_model():
+    return HaAgentSettings
