@@ -16,6 +16,10 @@ class HaAgentSettings(BaseModel):
         title="HA Auth Token (only if not addon)",
         default="Bearer ..."
     )
+    ha_intents: str = Field(
+        title="HA intents (comma separated)",
+        default="[{\"name\": \"intentName\", \"examples\": [\"example1\", \"example2\"]}]"
+    )
 
 @plugin
 def settings_model():
