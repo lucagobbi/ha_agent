@@ -14,7 +14,17 @@ def agent_allowed_tools(allowed_tools, cat):
     allowed_tools = ["call_ha"]
     return allowed_tools
 
-@tool
+
+def get_examples():
+    settings = ccat.mad_hatter.get_plugin().load_settings()
+    return format_json_string(settings["ha_intents"])
+
+def format_json_string(json_str):
+    data = json.loads(json_str)
+    formatted_strings = [f"{item['name']}: {', '.join(item['examples'])}" for item in data]
+    return formatted_strings
+
+@tool(examples=get_examples())
 def call_ha(tool_input, cat):
     """Useful to call an home device or service"""
     settings = ccat.mad_hatter.get_plugin().load_settings()
