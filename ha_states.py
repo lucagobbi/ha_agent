@@ -4,7 +4,7 @@ from cat.looking_glass.cheshire_cat import CheshireCat
 from cat.plugins.ha_agent.utils import get_ha_client
 from homeassistant_api.models.states import State
 import json
-from typing import Any, Literal
+from typing import Literal
 
 ccat = CheshireCat()
 
@@ -47,12 +47,12 @@ class GetStateForm(CatForm):
     
 class SetStateModel(BaseModel):
     entity_name: str = Field(description=f"Must be one of the following: {get_ha_entities_friendly_names()}. ")
-    new_state: Any = Field(description=f"New state that the user wants to be set for the entity")
+    new_state: str = Field(description=f"New state that the user wants to be set for the entity")
     
 @form
 class SetStateForm(CatForm):
     description = f"Useful to set the state of an entity"
-    model_class = GetStateModel
+    model_class = SetStateModel
     start_examples = get_examples_from_entities("Set")
     stop_examples = []
 

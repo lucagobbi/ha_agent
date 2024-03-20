@@ -5,14 +5,14 @@
 
 [![awesome plugin](https://custom-icon-badges.demolab.com/static/v1?label=&message=awesome+plugin&color=F4F4F5&style=for-the-badge&logo=cheshire_cat_black)](https://)
 
-HA Agent is a Cheshire Cat plugin that connects the Cat to your HomeAssistant instance,
+HA Agent is a Cheshire Cat plugin that connects the Cat to your Home Assistant instance,
 letting you embrace the power of LLMs to control your home devices with natural language.
 
 ## Configuration
 
 Once you have installed the plugin through the Cheshire Cat admin panel, you need to do some configuration before talking to the Cat.
 
-First of all, you can choose whether the plugin is working in a HA addon environment. If this is true you don't need to configure the HA API URL and HA Auth Token because the plugin will handle the communication with Home Assistant directly.
+First of all, you can choose whether the plugin is working in a HA addon environment. If this is true you don't need to configure the HA instance URL and HA Auth Token because the plugin will handle the communication with Home Assistant directly.
 Otherwise, be sure to point to your HA installation (e.g. http://homeassistant.local:8123) and provide a valid token to authenticate requests to Home Assistant APIs.
 
 Now it's time to choose what services and entities you want the Cat to be able to control.
@@ -21,6 +21,8 @@ Now it's time to choose what services and entities you want the Cat to be able t
 
 The HA Agent plugin is meant to provide a flexible and complete integration with Home Assistant, to achieve that service/domain specific tools needs to be developed. 
 Currently there are two available integrations:
+
+ - <b>State Form</b>: a configurable form to get or set the state of a given entity. You only need to provide the entity id you want to retrieve and a friendly name for it. Please note: Setting the state via the HA API does not enable communication with the device; it merely updates the device's representational state within HA. However, this action may still trigger automations. The <a href="https://developers.home-assistant.io/docs/api/rest/">official docs</a> recommend using service endpoints to talk to devices. We're planning to add a specific integration for this soon!
 
  - <b>Intent Form</b>: a configurable form to handle all the intent scripts in your HA configuration.yaml file. You only need to provide the name of the intent script and an example of a trigger sentence.
 
