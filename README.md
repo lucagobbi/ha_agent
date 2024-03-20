@@ -31,7 +31,7 @@ Currently there are two available integrations:
 Here is an example of the Intent Form integration:
 
 - Once you have installed the HA Agent plugin, you have to provide some settings in the admin panel of your Cat instance. In the list of intents
-you should provide an object with name, the name of your intent script, and example, an example of a trigger sentence for that specific intent.
+you should provide an object with name (the actual name of your intent script) and an example (a trigger sentence for that specific intent).
 
 E.g. one could have a temperature sensor and an intent script to read it. So in your HA configuration.yaml:
 
