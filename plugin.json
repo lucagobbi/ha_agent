@@ -1,6 +1,6 @@
 {
     "name": "HA Agent",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "The HA Agent is a plugin that helps you integrate the Cat within your HomeAssistant instance. Let the Cat manage your home devices!",
     "author_name": "Luca Gobbi",
     "author_url": "https://github.com/lucagobbi",
