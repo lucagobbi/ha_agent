@@ -26,6 +26,8 @@ Currently there are three available integrations:
 
  - <b>Intent Form</b>: a configurable form to handle all the intent scripts in your HA configuration.yaml file. You only need to provide the name of the intent script and an example of a trigger sentence.
 
+ - <b>Shopping List</b>: this integration is designed to facilitate access to a comprehensive range of HA APIs associated with the shopping list service. Its architecture predominantly leverages Cheshire Cat tools, diverging from the conventional forms-based approach of other integrations. It enables users to effortlessly add, remove, mark items as complete or incomplete, or retrieve the entire shopping list.
+
  - <b>Light Form</b>: a configurable form to handle all the light entities in your HA environment. You only need to provide the entity id of your light and a friendly name of it, so that the agent could easily localized the correct light in your house.
 
 ### Examples
