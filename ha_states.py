@@ -10,6 +10,8 @@ ccat = CheshireCat()
 
 def get_ha_entities_friendly_names():
     settings = ccat.mad_hatter.get_plugin().load_settings()
+    if settings["ha_entities"] == "":
+        return []
     entities = json.loads(settings["ha_entities"])
     return [entity["friendly_name"] for entity in entities]
 
@@ -22,6 +24,8 @@ def get_entity_id(friendly_name: str):
         
 def get_examples_from_entities(get_or_set: Literal["Get", "Set"]):
     settings = ccat.mad_hatter.get_plugin().load_settings()
+    if settings["ha_entities"] == "":
+        return []
     entities = json.loads(settings["ha_entities"])
     return [f"{get_or_set} the state of {entity['friendly_name']}" for entity in entities]
 
