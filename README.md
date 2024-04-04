@@ -20,7 +20,7 @@ Now it's time to choose what services and entities you want the Cat to be able t
 ### Available integrations
 
 The HA Agent plugin is meant to provide a flexible and complete integration with Home Assistant, to achieve that, service/domain specific tools needs to be developed. 
-Currently there are three available integrations:
+Currently there are four available integrations:
 
  - <b>State Form</b>: a configurable form to get or set the state of a given entity. You only need to provide the entity id you want to retrieve and a friendly name for it. Please note: Setting the state via the HA API does not enable communication with the device; it merely updates the device's representational state within HA. However, this action may still trigger automations. The <a href="https://developers.home-assistant.io/docs/api/rest/">official docs</a> recommend using service endpoints to talk to devices. We're planning to add a specific integration for this soon!
 
